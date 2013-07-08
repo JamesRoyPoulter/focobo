@@ -21,3 +21,4 @@ Recipe.destroy_all
   Recipe.create! title: 'Pizza', instructions: 'Make the dough, roll it out flat, cover with tomato sauce and cheese and add any desired toppings. Place in oven for 1 hour.'
 
   Recipe.create! title: 'Spaghetti', instructions: 'Place spaghetti in boiling water for 12 minutes, then add tomato sauce and herbs and heat for a further 3 minutes. Remove from heat and place in a bowl for eating. Add parmesan cheese and fresh basil.'
+
