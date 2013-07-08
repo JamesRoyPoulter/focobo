@@ -8,11 +8,11 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
-group development do
+group :development do
   gem 'pry-rails'
   gem 'pry-debugger'
-  gem 'pry-stack explorer'
-  gem 'better-errors'
+  gem 'pry-stack_explorer'
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
 end
