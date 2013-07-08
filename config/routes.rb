@@ -1,7 +1,8 @@
 Thecooboo::Application.routes.draw do
+  # get "home/home"
+
+  root to: "home#home"
   resources :ingredients
-
-
   resources :recipes
 
 
