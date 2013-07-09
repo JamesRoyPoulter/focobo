@@ -23,7 +23,39 @@
     <%= f.label :instructions %><br />
     <%= f.text_area :instructions %>
   </div>
+   <div>
+      <b>Ingredients:</b>
+       <% Ingredient.all.each do |ingredient| %>
+       <%= label_tag ingredient.name %>
+       <%= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, @recipe.ingredient_ids.include?(ingredient.id) %>
+       <% end %>
+   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

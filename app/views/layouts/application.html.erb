@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Thecooboo</title>
+  <title>focobo</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<li><%= link_to 'Recipes', recipes_path %></li>
-<li><%= link_to 'Ingredients', ingredients_path %></li>
-<%= yield %>
+  <div class="container">
+    <div class="main">
+
+      <%= yield %>
+    </div>
+
+    <!-- login section -->
+    <div class="login">
+      <%= link_to 'Recipes', recipes_path %>
+      <%= link_to 'Ingredients', ingredients_path %>
+      <% if current_user %>
+      <p>hello, <%= current_user.email %></p>
+      <%= link_to 'logout', session_path(session), method: :delete, data: {confirm: 'are you sure?' } %>
+      <% else %>
+        <% if params[:action] != 'new' && params[:controller] != 'users'  %>
+          <%= link_to 'create', new_user_path %>
+         <%= link_to 'please login to our site', login_path %>
+       <% else %>
+         <%= link_to 'please login to our site', login_path %>
+       <% end %>
+      <% end %>
+      <% flash.each do |name, message| %>
+      <div class='flash-message flash-message-<%=name%>'>
+        <%= message %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<h1>Listing recipes</h1>
+<h1>Recipes</h1>
 
 <table>
   <tr>
@@ -16,8 +16,10 @@
     <td><%= recipe.image %></td>
     <td><%= recipe.instructions %></td>
     <td><%= link_to 'Show', recipe %></td>
+    <% if can? :create, Recipe %>
     <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
     <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

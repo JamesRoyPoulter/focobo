@@ -1,10 +1,12 @@
 Thecooboo::Application.routes.draw do
-  # get "home/home"
 
-  root to: "home#home"
+  get '/login', to: 'sessions#new'
+  resources :sessions, only: [:create, :destroy]
+  # root to: 'recipes#index'
+  root to: 'home#home'
   resources :ingredients
   resources :recipes
-
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
