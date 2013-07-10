@@ -2,14 +2,16 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>DESTROY</th>
   </tr>
 
 <% @ingredients.each do |ingredient| %>
   <tr>
+    <td> <%= image_tag ingredient.recipe_image.small_thumb.url %></td>
     <td><%= ingredient.name %></td>
     <td><%= link_to 'Show', ingredient %></td>
     <% if can? :create, Ingredient %>

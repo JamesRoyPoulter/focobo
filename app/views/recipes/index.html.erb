@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Image</th>
+    <th></th>
+    <th>Recipe</th>
     <th>Instructions</th>
     <th></th>
     <th></th>
@@ -12,10 +12,9 @@
 
 <% @recipes.each do |recipe| %>
   <tr>
-    <td><%= recipe.title %></td>
-    <td><%= recipe.image %></td>
+    <td> <%= image_tag recipe.recipe_image.thumb.url %></td>
+    <td><%= link_to recipe.title %></td>
     <td><%= recipe.instructions %></td>
-    <td><%= link_to 'Show', recipe %></td>
     <% if can? :create, Recipe %>
     <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
     <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
