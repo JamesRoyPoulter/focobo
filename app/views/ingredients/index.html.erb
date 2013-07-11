@@ -4,16 +4,16 @@
   <tr>
     <th></th>
     <th>Name</th>
-    <th>Show</th>
+    <% if can? :create, Ingredient %>
     <th>Edit</th>
     <th>DESTROY</th>
+    <% end %>
   </tr>
 
 <% @ingredients.each do |ingredient| %>
   <tr>
     <td> <%= image_tag ingredient.recipe_image.small_thumb.url %></td>
-    <td><%= ingredient.name %></td>
-    <td><%= link_to 'Show', ingredient %></td>
+    <td><%= link_to ingredient.name, ingredient %></td>
     <% if can? :create, Ingredient %>
     <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
     <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +24,6 @@
 
 <br />
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+<% if can? :create, Ingredient %>
+  <%= link_to 'New Ingredient', new_ingredient_path %>
+<% end %>

@@ -1,5 +1,9 @@
 <h1>Recipes</h1>
 
+<% if flash %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
 <table>
   <tr>
     <th></th>
@@ -13,7 +17,7 @@
 <% @recipes.each do |recipe| %>
   <tr>
     <td> <%= image_tag recipe.recipe_image.thumb.url %></td>
-    <td><%= link_to recipe.title %></td>
+    <td><%= link_to recipe.title, recipe %></td>
     <td><%= recipe.instructions %></td>
     <% if can? :create, Recipe %>
     <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
@@ -25,4 +29,6 @@
 
 <br />
 
-<%= link_to 'New Recipe', new_recipe_path %>
+<% if can? :create, Recipe %>
+  <%= link_to 'New Recipe', new_recipe_path %>
+<% end %>

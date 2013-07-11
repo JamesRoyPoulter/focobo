@@ -5,7 +5,11 @@ Thecooboo::Application.routes.draw do
   # root to: 'recipes#index'
   root to: 'home#home'
   resources :ingredients
-  resources :recipes
+  resources :recipes do
+    collection do
+      match 'search', to: 'recipes#search', via: [:get, :post], as: :search
+    end
+  end
   resources :users
 
   # The priority is based upon order of creation:

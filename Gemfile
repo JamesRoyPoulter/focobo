@@ -9,6 +9,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'ransack'
 
 group :development do
   gem 'pry-rails'

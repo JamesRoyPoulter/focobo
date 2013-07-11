@@ -3,12 +3,20 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @recipes }
+    @q = Recipe.search(params[:q])
+    @recipes = @q.result(distinct: true)
+    if @q.result.empty?
+      flash[:error] = "No matches"
     end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @recipes }
+    # end
+  end
+
+  def search
+    index
+    render :index
   end
 
   # GET /recipes/1

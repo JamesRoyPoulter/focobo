@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  before_filter :setup_search
+
   rescue_from CanCan: :AccessDenied do |exception|
     redirect_to root_url, alert: 'kcuf YOU'
   end
@@ -22,5 +24,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  private
+  def setup_search
+    @q = Recipe.search(params[:q])
+  end
+
 
 end

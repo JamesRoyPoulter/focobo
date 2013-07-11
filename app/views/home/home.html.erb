@@ -1,2 +1,12 @@
 <h1>the COOBOO</h1>
 <p>This is the mega home view whoop whoop</p>
+
+<% if flash %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+<%= search_form_for @q, url: search_recipes_path, html: {method: :post} do |f| %>
+        <%= f.label :title_cont %>
+        <%= f.text_field :title_cont %>
+        <%= f.submit %>
+    <% end %>
